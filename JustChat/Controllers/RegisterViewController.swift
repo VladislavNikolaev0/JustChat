@@ -15,3 +15,18 @@ class RegisterViewController: UIViewController {
         
     }
 }
+
+private extension RegisterViewController {
+    
+    func setupUI() {
+        
+    }
+    
+    func setupHierarchy() {
+        
+    }
+    
+    func setupConstraints() {
+        
+    }
+}
