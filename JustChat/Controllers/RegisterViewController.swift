@@ -91,10 +91,19 @@ private extension RegisterViewController {
     func setupUI() {
         view.backgroundColor = .white
         
-        registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
-        
+        setTargets()
         setupHierarchy()
         setupConstraints()
+    }
+    
+    func setTargets() {
+        
+        registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(photoProfileTapped))//UIGestureRecognizer(target: self, action: #selector(photoProfileTapped))
+        profilePhoto.addGestureRecognizer(gesture)
+        
+        
     }
     
     func setupHierarchy() {
@@ -206,6 +215,12 @@ private extension RegisterViewController {
             password: password
         )
     }
+    
+    @objc
+    func photoProfileTapped() {
+        presentPhotoActionSheet()
+        print("ssssssssssșssss")
+    }
 }
 
 extension RegisterViewController: RegisterViewInput {
@@ -228,5 +243,67 @@ extension RegisterViewController: RegisterViewInput {
             password: password
         )
     }
+}
+
+extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    func presentPhotoActionSheet() {
+        let actionSheet = UIAlertController(
+            title: "Pictures for profile",
+            message: "How would u like chose a photo?",
+            preferredStyle: .alert
+        )
+        
+        actionSheet.addAction(UIAlertAction(
+            title: "Cancel",
+            style: .cancel,
+            handler: nil))
+        
+        actionSheet.addAction(UIAlertAction(
+            title: "Take photo",
+            style: .default
+        ) { [weak self] _ in
+            self?.presentCamera()
+        })
+        
+        actionSheet.addAction(UIAlertAction(
+            title: "Chose a photo",
+            style: .default
+        ) { [weak self] _ in
+            self?.presentPhotoPicker()
+        })
+        
+        present(actionSheet,animated: true)
+    }
+    
+    func presentCamera() {
+        let vc = UIImagePickerController()
+        
+        vc.sourceType = .camera
+        vc.delegate = self
+        vc.allowsEditing = true
+        
+        present(vc, animated: true)
+    }
+    
+    func presentPhotoPicker() {
+        let vc = UIImagePickerController()
+        
+        vc.sourceType = .photoLibrary
+        vc.delegate = self
+        vc.allowsEditing = true
+        
+        present(vc, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        
+        let selectedImage = info[.editedImage] as? UIImage
+        self.profilePhoto.image = selectedImage
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
 }

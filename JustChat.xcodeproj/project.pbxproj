@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F02D3BE587B49156740D6CE /* Pods_JustChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 678A47C636EF12856659425E /* Pods_JustChat.framework */; };
+		C132CD0E2CDB3484007F509F /* AuthLoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132CD0D2CDB3478007F509F /* AuthLoginPresenter.swift */; };
 		C160F4072CDA6DD3004E3B67 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C160F3EF2CDA6DD3004E3B67 /* ConversationsViewController.swift */; };
 		C160F4082CDA6DD3004E3B67 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C160F3F02CDA6DD3004E3B67 /* LoginViewController.swift */; };
 		C160F4092CDA6DD3004E3B67 /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C160F3F12CDA6DD3004E3B67 /* NewConversationViewController.swift */; };
@@ -35,6 +36,7 @@
 		2D113ABA7E299EA1C10F67C4 /* Pods-JustChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustChat.release.xcconfig"; path = "Target Support Files/Pods-JustChat/Pods-JustChat.release.xcconfig"; sourceTree = "<group>"; };
 		5DCF7E80B16F318737BC3CEB /* Pods-JustChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustChat.debug.xcconfig"; path = "Target Support Files/Pods-JustChat/Pods-JustChat.debug.xcconfig"; sourceTree = "<group>"; };
 		678A47C636EF12856659425E /* Pods_JustChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JustChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C132CD0D2CDB3478007F509F /* AuthLoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoginPresenter.swift; sourceTree = "<group>"; };
 		C160F3EF2CDA6DD3004E3B67 /* ConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
 		C160F3F02CDA6DD3004E3B67 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C160F3F12CDA6DD3004E3B67 /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				C160F4172CDA6DE7004E3B67 /* AuthRegPresenter.swift */,
+				C132CD0D2CDB3478007F509F /* AuthLoginPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C132CD0E2CDB3484007F509F /* AuthLoginPresenter.swift in Sources */,
 				C160F4072CDA6DD3004E3B67 /* ConversationsViewController.swift in Sources */,
 				C160F41D2CDA75C7004E3B67 /* AuthManager.swift in Sources */,
 				C160F4182CDA6DEC004E3B67 /* AuthRegPresenter.swift in Sources */,
