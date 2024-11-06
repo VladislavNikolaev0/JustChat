@@ -19,41 +19,17 @@ class LoginViewController: UIViewController {
         return scroll
     }()
     
-    private lazy var emailTextField: UITextField = {
-        let field = UITextField()
-        field.autocapitalizationType = .none
-        field.autocorrectionType = .no
-        field.returnKeyType = .continue
-        field.font = UIFont.systemFont(ofSize: 12)
-        field.layer.cornerRadius = 12
-        field.layer.borderWidth = 1
-        field.layer.borderColor = UIColor.lightGray.cgColor
-        field.placeholder = "Email"
-        field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
-        field.leftViewMode = .always
-        field.backgroundColor = .white
-        field.translatesAutoresizingMaskIntoConstraints = false
-        return field
-    }()
+    private lazy var emailTextField = StandartTextField(
+        type: .standart,
+        isLast: false,
+        placeholder: "Email"
+    )
     
-    private lazy var passwordTextField: UITextField = {
-        let field = UITextField()
-        field.autocapitalizationType = .none
-        field.autocorrectionType = .no
-        field.returnKeyType = .done
-        field.isSecureTextEntry = true
-        field.textContentType = .oneTimeCode
-        field.font = UIFont.systemFont(ofSize: 12)
-        field.layer.cornerRadius = 12
-        field.layer.borderWidth = 1
-        field.layer.borderColor = UIColor.lightGray.cgColor
-        field.placeholder = "Password"
-        field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
-        field.leftViewMode = .always
-        field.backgroundColor = .white
-        field.translatesAutoresizingMaskIntoConstraints = false
-        return field
-    }()
+    private lazy var passwordTextField = StandartTextField(
+        type: .secure,
+        isLast: true,
+        placeholder: "Password"
+    )
     
     private lazy var loginButton: UIButton = {
         let button = UIButton()
@@ -135,8 +111,8 @@ private extension LoginViewController {
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
-            emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            emailTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            emailTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            emailTextField.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor),
             emailTextField.heightAnchor.constraint(equalToConstant: 40),
             emailTextField.widthAnchor.constraint(equalToConstant: 250),
             
@@ -152,11 +128,26 @@ private extension LoginViewController {
         ])
     }
     
+    func alertUsingLoginError() {
+        let alert = UIAlertController(
+            title: "Log In Error",
+            message: "Try use @ in email or/and password is less than 6 characters",
+            preferredStyle: .alert
+        )
+        
+        alert.addAction(UIAlertAction(
+            title: "Dismiss",
+            style: .cancel)
+        )
+        
+        present(alert, animated: true)
+    }
+    
     // MARK: - Actions
     
     @objc
     func didTapRegister() {
-        let vc = RegisterViewController()
+        let vc = RegistrationViewAssembly.assembly()
         vc.title = "Register"
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -178,19 +169,5 @@ private extension LoginViewController {
             return
         }
     }
-    
-    func alertUsingLoginError() {
-        let alert = UIAlertController(
-            title: "Log In Error",
-            message: "Try use @ in email or/and password is less than 6 characters",
-            preferredStyle: .alert
-        )
-        
-        alert.addAction(UIAlertAction(
-            title: "Dismiss",
-            style: .cancel)
-        )
-        
-        present(alert, animated: true)
-    }
+
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAZ4O5pLmwO0z2D8ncotT1-IcY-2ICTdQc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>341438124760</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Vn.JustChat</string>
+	<key>PROJECT_ID</key>
+	<string>justchat-b2f7f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>justchat-b2f7f.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:341438124760:ios:087dad0d05ad271e5afdad</string>
+</dict>
+</plist>
