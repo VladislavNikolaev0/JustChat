@@ -24,6 +24,8 @@ class RegisterViewController: UIViewController {
         image.image = UIImage(systemName: "photo.circle.fill")
         image.contentMode = .scaleAspectFit
         image.tintColor = .systemGray
+        image.isUserInteractionEnabled = true
+        image.layer.masksToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -83,6 +85,15 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        profilePhoto.layoutIfNeeded()
+        profilePhoto.layer.borderWidth = 2
+        profilePhoto.layer.borderColor = UIColor.systemGray.cgColor
+        profilePhoto.layer.cornerRadius = profilePhoto.bounds.width / 2
     }
 }
 
@@ -219,7 +230,6 @@ private extension RegisterViewController {
     @objc
     func photoProfileTapped() {
         presentPhotoActionSheet()
-        print("ssssssssssșssss")
     }
 }
 

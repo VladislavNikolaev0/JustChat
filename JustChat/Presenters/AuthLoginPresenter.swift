@@ -7,6 +7,17 @@
 
 import UIKit
 
+protocol LoginViewInput: AnyObject {
+    func didLoginTapped(email: String, password: String)
+    
+    func failedLogin(error: String)
+    func successfullyLoggedIn(uid: String)
+}
+
+protocol LoginViewOutput: AnyObject {
+    func login(email: String, password: String)
+}
+
 final class AuthLoginPresenter {
     
     var loginView: LoginViewInput?
@@ -20,27 +31,32 @@ final class AuthLoginPresenter {
             self.loginView = loginView
             self.authManager = authManager
             self.dataManager = dataManager
-    }
+        }
 }
 
 extension AuthLoginPresenter: LoginViewOutput {
     
     func login(email: String, password: String) {
-        authManager.loginUser(
-            email: email,
-            password: password
-        ) { [weak self] result in
+        
+        DispatchQueue.main.async { [weak self] in
+            
             guard let self else { return }
             
-            switch result {
+            self.authManager.loginUser(
+                email: email,
+                password: password
+            ) { [weak self] result in
+                guard let self else { return }
                 
-            case .success(let uid):
-                guard let uid else { return }
-                
-                
-            case .failure(let error):
-                DispatchQueue.main.async {
+                switch result {
                     
+                case .success(let uid):
+                    guard let uid else { return }
+                    
+                    self.loginView?.successfullyLoggedIn(uid: uid)
+                    
+                case .failure(let error):
+                    self.loginView?.failedLogin(error: error.localizedDescription)
                 }
             }
         }

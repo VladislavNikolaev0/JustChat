@@ -21,4 +21,5 @@ class DataBaseManager: DataBaseManagerProtocol {
         let collection = Firestore.firestore().collection("Users").document(user.uid)
         collection.setData(user.toDict(), completion: completion)
     }
+    
 }

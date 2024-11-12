@@ -9,12 +9,16 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    var output: LoginViewOutput
+    
     // MARK: - Private Properties
     
     private lazy var scrollView: UIScrollView = {
         let scroll = UIScrollView()
         scroll.showsHorizontalScrollIndicator = false
         scroll.clipsToBounds = true
+        scroll.isUserInteractionEnabled = true
+        scroll.isScrollEnabled = true
         scroll.translatesAutoresizingMaskIntoConstraints = false
         return scroll
     }()
@@ -42,6 +46,15 @@ class LoginViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    init(output: LoginViewOutput) {
+        self.output = output
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Life Cycle
     
@@ -128,10 +141,10 @@ private extension LoginViewController {
         ])
     }
     
-    func alertUsingLoginError() {
+    func alertUsingLoginError(message: String? = nil) {
         let alert = UIAlertController(
             title: "Log In Error",
-            message: "Try use @ in email or/and password is less than 6 characters",
+            message: message != nil ? message : "Try use @ in email or/and password is less than 6 characters",
             preferredStyle: .alert
         )
         
@@ -168,6 +181,23 @@ private extension LoginViewController {
             alertUsingLoginError()
             return
         }
+        
+        didLoginTapped(email: email, password: password)
     }
 
+}
+
+extension LoginViewController: LoginViewInput {
+    
+    func didLoginTapped(email: String, password: String) {
+        output.login(email: email, password: password)
+    }
+    
+    func failedLogin(error: String) {
+        alertUsingLoginError(message: error)
+    }
+    
+    func successfullyLoggedIn(uid: String) {
+        print("User \(uid) successfully logged in")
+    }
 }

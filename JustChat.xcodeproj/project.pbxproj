@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F02D3BE587B49156740D6CE /* Pods_JustChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 678A47C636EF12856659425E /* Pods_JustChat.framework */; };
+		C110F1B12CE277E6007E5FAB /* LoginViewAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C110F1B02CE277D1007E5FAB /* LoginViewAssembly.swift */; };
 		C132CD0E2CDB3484007F509F /* AuthLoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132CD0D2CDB3478007F509F /* AuthLoginPresenter.swift */; };
 		C160F4072CDA6DD3004E3B67 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C160F3EF2CDA6DD3004E3B67 /* ConversationsViewController.swift */; };
 		C160F4082CDA6DD3004E3B67 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C160F3F02CDA6DD3004E3B67 /* LoginViewController.swift */; };
@@ -36,6 +37,7 @@
 		2D113ABA7E299EA1C10F67C4 /* Pods-JustChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustChat.release.xcconfig"; path = "Target Support Files/Pods-JustChat/Pods-JustChat.release.xcconfig"; sourceTree = "<group>"; };
 		5DCF7E80B16F318737BC3CEB /* Pods-JustChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustChat.debug.xcconfig"; path = "Target Support Files/Pods-JustChat/Pods-JustChat.debug.xcconfig"; sourceTree = "<group>"; };
 		678A47C636EF12856659425E /* Pods_JustChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JustChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C110F1B02CE277D1007E5FAB /* LoginViewAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewAssembly.swift; sourceTree = "<group>"; };
 		C132CD0D2CDB3478007F509F /* AuthLoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoginPresenter.swift; sourceTree = "<group>"; };
 		C160F3EF2CDA6DD3004E3B67 /* ConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
 		C160F3F02CDA6DD3004E3B67 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 		C160F4202CDAA15B004E3B67 /* Assemblies */ = {
 			isa = PBXGroup;
 			children = (
+				C110F1B02CE277D1007E5FAB /* LoginViewAssembly.swift */,
 				C160F4222CDAA185004E3B67 /* RegistrationViewAssembly.swift */,
 			);
 			path = Assemblies;
@@ -341,6 +344,7 @@
 				C160F4182CDA6DEC004E3B67 /* AuthRegPresenter.swift in Sources */,
 				C160F4082CDA6DD3004E3B67 /* LoginViewController.swift in Sources */,
 				C160F4092CDA6DD3004E3B67 /* NewConversationViewController.swift in Sources */,
+				C110F1B12CE277E6007E5FAB /* LoginViewAssembly.swift in Sources */,
 				C160F40A2CDA6DD3004E3B67 /* PhotoViewerViewController.swift in Sources */,
 				C160F4252CDAA44B004E3B67 /* DataBaseManager.swift in Sources */,
 				C160F41F2CDAA052004E3B67 /* String + ext.swift in Sources */,

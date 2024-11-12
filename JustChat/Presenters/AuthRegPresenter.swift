@@ -7,14 +7,6 @@
 
 import UIKit
 
-protocol LoginViewInput: AnyObject {
-    func didLoginTapped()
-}
-
-protocol LoginViewOutput: AnyObject {
-    func login(email: String, password: String)
-}
-
 protocol RegisterViewInput: AnyObject {
     func didRegisterTapped(
         firstName: String,
@@ -51,27 +43,29 @@ extension AuthRegPresenter: RegisterViewOutput {
         email: String,
         password: String
     ) {
-        authManager.registerNewUser(email: email, password: password) { [weak self] result in
+        DispatchQueue.main.async { [weak self] in
             guard let self else { return }
-            switch result {
-            case .success(let uid):
-                guard let uid else { return }
-                dataManager.save(
-                    user: User(
-                        uid: uid,
-                        firstName: firstName,
-                        lastName: lastName,
-                        email: email
-                    )) { [weak self] error in
-                        if let error {
-                            DispatchQueue.main.async { [weak self] in
-                                self?.registrationView?.failedRegister(error: error.localizedDescription)
+            
+            self.authManager.registerNewUser(email: email, password: password) { result in
+                
+                switch result {
+                    
+                case .success(let uid):
+                    guard let uid else { return }
+                    self.dataManager.save(
+                        user: User(
+                            uid: uid,
+                            firstName: firstName,
+                            lastName: lastName,
+                            email: email
+                        )) { error in
+                            if let error {
+                                self.registrationView?.failedRegister(error: error.localizedDescription)
                             }
                         }
-                    }
-            case .failure(let error):
-                DispatchQueue.main.async { [weak self] in
-                    self?.registrationView?.failedRegister(error: error.localizedDescription)
+                    
+                case .failure(let error):
+                    self.registrationView?.failedRegister(error: error.localizedDescription)
                 }
             }
         }
